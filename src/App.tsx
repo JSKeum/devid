@@ -6,6 +6,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import { DevidContext } from "./store/store";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
   const { dispatch } = useContext(DevidContext);
@@ -40,6 +41,7 @@ function App() {
         <Switch>
           <Route exact path="/main" component={MainPage} />
           <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignupPage} />
           <Redirect exact to="/main" />
         </Switch>
       </Router>
