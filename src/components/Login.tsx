@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DevidContext } from '../store/store';
 
-function LoginPage() {
+function Login() {
     const { dispatch, state } = useContext(DevidContext);
     const history = useHistory();
   
@@ -31,4 +31,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage;
+export default Login;

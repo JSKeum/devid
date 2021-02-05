@@ -3,10 +3,10 @@ import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-d
 import getWeb3 from "./utils/getWeb3";
 import { abi as cocFactoryContractAbi, address as cocFactoryContractAddress } from './customContracts/cocFactory';
 import "./App.css";
-import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import { DevidContext } from "./store/store";
 import SignupPage from "./pages/SignupPage";
+import IntroPage from "./pages/IntroPage";
 
 function App() {
   const { dispatch } = useContext(DevidContext);
@@ -39,10 +39,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route exact path="/intro" component={IntroPage} />
           <Route exact path="/main" component={MainPage} />
-          <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
-          <Redirect exact to="/main" />
+          <Redirect exact to="/intro" />
         </Switch>
       </Router>
     </div>
