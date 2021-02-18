@@ -1,0 +1,62 @@
+$BEIGE_BACKGROUND: #FFFDFB;
+
+.signupWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .signup {
+        padding: 40px 80px;
+        background-color: $BEIGE_BACKGROUND;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+    
+        button {
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid purple;
+            padding: 16px 32px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+    
+        button:hover {
+            background-color: purple;
+            color: white
+        }
+    
+        h1 {
+            margin-bottom: 80px;
+        }
+    }
+
+    .title {
+        margin-bottom: 40px;
+
+        img {
+            width: 80px;
+            height: auto;
+            margin-left: 24px;
+        }
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -7,7 +7,7 @@ import MainPage from "./pages/MainPage";
 import { DevidContext } from "./store/store";
 import SignupPage from "./pages/SignupPage";
 import IntroPage from "./pages/IntroPage";
-import CocFormPage from "./pages/CocForm";
+import CocFormPage from "./pages/CocFormPage";
 import CocReceivedPage from "./pages/CocReceived";
 import CocDetail from "./pages/CocDetail";
 

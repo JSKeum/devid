@@ -1,37 +1,104 @@
-.topInfo {
+$BEIGE_BACKGROUND: #FFFDFB;
+
+.coc-page {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+    justify-content: space-around;
 
-.topInfo input{
-    border-radius: 8px;
-    padding: 10px 20px;
-    text-align: center;
-    margin-bottom: 24px;
-}
+    .coc-left {
+        img {
+            width: 50vw;
+            height: auto;
+        }
+    }
 
-.bottomInfo input{
-    border-radius: 8px;
-    padding: 10px 20px;
-    text-align: center;
-    margin-bottom: 24px;
-}
+    .coc-right {
+        background: $BEIGE_BACKGROUND;
+        padding-bottom: 100px;
+        padding: 40px 20px 20px 80px;
 
-.bottomInfo textarea {
-    padding: 40px 40px;
-    margin-bottom: 20px;
-}
+        img {
+            width: 100px;
+            height: auto;
+        }
 
-.cocForm button {
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid purple;
-    padding: 16px 10px;
-    margin-bottom: 40px;
-}
+        .topInfo {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 16px;
 
-.cocForm button:hover {
-    background-color: purple;
-    color: white
+            h3 {
+                font-weight: 400;
+                border-radius: 4px;
+                background: rgba(0, 0, 0, 0.075);
+                width: 80px;
+                padding: 6px 0;
+                margin: 8px 0;
+            }
+
+            .sender-info, .recipient-info {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                .name-phone {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .name, .phone, .email, .address {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+
+        .bottomInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            .date-input {
+                width: 160px;
+            }
+
+            textarea {
+                padding: 40px 40px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        input  {
+            border-radius: 8px;
+            text-align: center;
+            width: 120px;
+            height: 30px;
+            margin: 0 24px;
+            border: 1px solid black;
+        }
+    }
+
+    .submit {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid purple;
+        padding: 24px 32px;
+        margin-bottom: 40px;
+        font-size: 1.5rem;
+    }
+
+    .submit:hover {
+        background-color: purple;
+        color: white;
+    }
 }

@@ -5,6 +5,8 @@ import EthCrypto from 'eth-crypto';
 
 import { DevidContext } from '../store/store';
 import './CocFormPage.scss';
+import cocLeftImage from '../assets/coc-left.png';
+import devidDocumentImage from '../assets/devid-document.png';
 
 function CocFormPage() {
     const { state } = useContext(DevidContext);
@@ -54,11 +56,11 @@ function CocFormPage() {
     const handleInterestChange = (event: any) => {
         setInterest(event.target.value);
     }
-    const [lentDate, setLentDate] = useState('');
+    const [lentDate, setLentDate] = useState('2021-02-18');
     const handleLentDateChange = (event: any) => {
         setLentDate(event.target.value);
     }
-    const [receivingDate, setReceivingDate] = useState('');
+    const [receivingDate, setReceivingDate] = useState('2021-02-18');
     const handleReceivingDateChange = (event: any) => {
         setReceivingDate(event.target.value);
     }
@@ -66,7 +68,7 @@ function CocFormPage() {
     const handleAmountChange = (event: any) => {
         setAmount(event.target.value);
     }
-    const [ultimatumDate, setUltimatumDate] = useState('');
+    const [ultimatumDate, setUltimatumDate] = useState('2021-02-18');
     const handleUltimatumDateChange = (event: any) => {
         setUltimatumDate(event.target.value);
     }
@@ -149,73 +151,89 @@ function CocFormPage() {
     }
 
     return (
-        <div className="cocForm">
-            <h1>대여금 반환 청구</h1>
-            <div className="topInfo">
-                <div className="sender-info">
-                    <h2>발신인 정보</h2>
-                    <div className="name-phone">
-                        <h3>이름</h3>
-                        <input type="text" value={senderName} onChange={handleSenderNameChange}/>
-                        <h3>핸드폰</h3>
-                        <input type="number" value={senderPhoneNumber} onChange={handleSenderPhoneNumberChange}/>
-                    </div>
-                    <div className="address">
-                        <h3>주소</h3>
-                        <input type="text" value={senderAddress} onChange={handleSenderAddressChange}/>
-                    </div>
-                    <div className="email   ">
-                        <h3>이메일</h3>
-                        <input type="text" value={senderEmail} onChange={handleSenderEmailChange}/>
-                    </div>
-                </div>
-                <div className="recipient-info">
-                    <h2>수신인 정보</h2>
-                    <div>
-                        <h3>이름</h3>
-                        <input type="text" value={recipientName} onChange={handleRecipientNameChange}/>
-                        <h3>핸드폰</h3>
-                        <input type="number" value={recipientPhoneNumber} onChange={handleRecipientPhoneNumberChange}/>
-                    </div>
-                    <div>
-                        <h3>주소</h3>
-                        <input type="text" value={recipientAddress} onChange={handleRecipientAddressChange}/>
-                    </div>
-                    <div>
-                        <h3>이메일</h3>
-                        <input type="text" value={recipientEmail} onChange={handleRecipientEmailChange}/>
-                    </div>
-                    <div>
-                        <h3>수신인 계정의 Public Key</h3>
-                        <input type="text" value={recipientPublicKey} onChange={handleRecipientPublicKeyChange}/>
-                    </div>
-                </div>
+        <div className="coc-page">
+            <div className="coc-left">
+                <img src={cocLeftImage} alt="coc-left"/>
             </div>
-            <div className="bottomInfo">
-                <div>
-                    <h3>빌려준 금액(원)</h3>
-                    <input type="number" value={debt} onChange={handleDebtChange}/>
-                    <h3>이율(연 %)</h3>
-                    <input type="string" value={interest} onChange={handleInterestChange}/>
+            <div className="coc-right">
+                <div className="flex flex-center">
+                    <h1>대여금 반환 청구</h1>
+                    <img src={devidDocumentImage} alt=""/>
                 </div>
-                <div>
-                    <h3>빌려준 날짜</h3>
-                    <input type="date" value={lentDate} onChange={handleLentDateChange}/>
-                    <h3>받기로 한 날짜</h3>
-                    <input type="date" value={receivingDate} onChange={handleReceivingDateChange}/>
+                <div className="topInfo">
+                    <div className="sender-info">
+                        <h2>발신인 정보</h2>
+                        <div className="name-phone flex">
+                            <div className="name">
+                                <h3>이름</h3>
+                                <input type="text" value={senderName} onChange={handleSenderNameChange}/>
+                            </div>
+                            <div className="phone">
+                                <h3>핸드폰</h3>
+                                <input type="number" value={senderPhoneNumber} onChange={handleSenderPhoneNumberChange}/>
+                            </div>
+                        </div>
+                        <div className="address">
+                            <h3>주소</h3>
+                            <input type="text" value={senderAddress} onChange={handleSenderAddressChange}/>
+                        </div>
+                        <div className="email">
+                            <h3>이메일</h3>
+                            <input type="text" value={senderEmail} onChange={handleSenderEmailChange}/>
+                        </div>
+                    </div>
+                    <div className="recipient-info">
+                        <h2>수신인 정보</h2>
+                        <div className="name-phone flex">
+                            <div className="name">
+                                <h3>이름</h3>
+                                <input type="text" value={recipientName} onChange={handleRecipientNameChange}/>
+                            </div>
+                            <div className="phone">
+                                <h3>핸드폰</h3>
+                                <input type="number" value={recipientPhoneNumber} onChange={handleRecipientPhoneNumberChange}/>
+                            </div>
+                        </div>
+                        <div className="address">
+                            <h3>주소</h3>
+                            <input type="text" value={recipientAddress} onChange={handleRecipientAddressChange}/>
+                        </div>
+                        <div className="email">
+                            <h3>이메일</h3>
+                            <input type="text" value={recipientEmail} onChange={handleRecipientEmailChange}/>
+                        </div>
+                        {/* <div>
+                            <h3>수신인 계정의 Public Key</h3>
+                            <input type="text" value={recipientPublicKey} onChange={handleRecipientPublicKeyChange}/>
+                        </div> */}
+                    </div>
                 </div>
-                <div>
-                    <h3>청구 금액(원)</h3>
-                    <input type="number" value={amount} onChange={handleAmountChange}/>
-                    <h3>최종 입금 기한</h3>
-                    <input type="date" value={ultimatumDate} onChange={handleUltimatumDateChange}/>
+                <div className="bottomInfo">
+                    <div className="flex">
+                        <h3>빌려준 금액(원)</h3>
+                        <input type="number" value={debt} onChange={handleDebtChange}/>
+                        <h3>이율(연 %)</h3>
+                        <input type="string" value={interest} onChange={handleInterestChange}/>
+                    </div>
+                    <div className="flex">
+                        <h3>빌려준 날짜</h3>
+                        <input className="date-input" type="date" value={lentDate} onChange={handleLentDateChange}/>
+                        <h3>받기로 한 날짜</h3>
+                        <input className="date-input" type="date" value={receivingDate} onChange={handleReceivingDateChange}/>
+                    </div>
+                    <div className="flex">
+                        <h3>청구 금액(원)</h3>
+                        <input className="date-input" type="number" value={amount} onChange={handleAmountChange}/>
+                        <h3>최종 입금 기한</h3>
+                        <input className="date-input" type="date" value={ultimatumDate} onChange={handleUltimatumDateChange}/>
+                    </div>
                 </div>
+                <div className="bottomInfo">
+                    <h2>기타 전하여야 할 내용</h2>
+                    <textarea value={otherText} onChange={handleOtherTextChange}/>
+                </div>
+                <button className="submit" type="button" onClick={onSubmit}>작성 완료</button>
             </div>
-            <div className="bottomInfo">
-                <h2>기타 전하여야 할 내용</h2>
-                <textarea value={otherText} onChange={handleOtherTextChange}/>
-            </div>
-            <button type="button" onClick={onSubmit}>작성 완료</button>
         </div>
     );
 }
