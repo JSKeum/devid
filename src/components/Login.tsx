@@ -24,10 +24,10 @@ function Login() {
     // TODO: 아이디가 있는 경우 메인페이지로 이동
 
     return (
-        <>
+        <div>
             <button type="button" onClick={connectWallet}>지갑으로 시작하기</button>
             <button type="button" onClick={connectWallet}>휴대폰 번호로 시작하기</button>
-        </>
+        </div>
     )
 }
 

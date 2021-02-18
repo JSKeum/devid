@@ -1,0 +1,21 @@
+.myCoC h1{
+    margin-bottom: 80px;
+}
+
+.myCoC h2{
+    margin-bottom: 40px;
+}
+
+
+.myCoC button {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid purple;
+    padding: 16px 10px;
+    margin-bottom: 40px;
+}
+
+.myCoC button:hover {
+    background-color: purple;
+    color: white
+}

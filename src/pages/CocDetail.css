@@ -1,0 +1,6 @@
+.cocDetail {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/coc.svg');
+    background-size: 100vw 100vh;
+}

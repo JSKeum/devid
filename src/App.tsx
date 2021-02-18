@@ -8,6 +8,8 @@ import { DevidContext } from "./store/store";
 import SignupPage from "./pages/SignupPage";
 import IntroPage from "./pages/IntroPage";
 import CocFormPage from "./pages/CocForm";
+import CocReceivedPage from "./pages/CocReceived";
+import CocDetail from "./pages/CocDetail";
 
 function App() {
   const { dispatch } = useContext(DevidContext);
@@ -44,6 +46,8 @@ function App() {
           <Route exact path="/main" component={MainPage} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/cocform" component={CocFormPage} />
+          <Route exact path="/cocreceived" component={CocReceivedPage} />
+          <Route exact path="/cocdetail" component={CocDetail} />
           <Redirect exact to="/intro" />
         </Switch>
       </Router>
