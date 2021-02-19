@@ -5,6 +5,7 @@ import { DevidState } from './reducer';
 const initialState: DevidState = {
   wallet: "",
   cocContractInstance: null,
+  web3: null,
 };
 
 type DevidDispatch = Dispatch<Action>;

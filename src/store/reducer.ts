@@ -1,8 +1,9 @@
-type ActionType = 'SET_USER_WALLET' | 'SET_COCFACTORY_CONTRACT';
+type ActionType = 'SET_USER_WALLET' | 'SET_COCFACTORY_CONTRACT' | 'SET_WEB3';
 
 export interface DevidState {
   wallet: string;
   cocContractInstance: any;
+  web3: any;
 }
 
 export interface Action {
@@ -21,6 +22,11 @@ const reducer = (state: DevidState, action: Action) => {
       return {
         ...state,
         cocContractInstance: action.value
+      }
+    case 'SET_WEB3':
+      return {
+        ...state,
+        web3: action.value
       }
     default: return state;
   }

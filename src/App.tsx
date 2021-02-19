@@ -21,6 +21,7 @@ function App() {
       const cocContractInstance = await makeCocContractInstance(web3, cocFactoryContractAbi, cocFactoryContractAddress );
   
       dispatch({ type: "SET_COCFACTORY_CONTRACT", value: cocContractInstance });
+      dispatch({ type: "SET_WEB3", value: web3 });
 
     } catch (error) {
       alert(
