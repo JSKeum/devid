@@ -1,0 +1,47 @@
+$BEIGE_BACKGROUND: #FFFDFB;
+
+.cocDetailPage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        margin-bottom: 60px;
+
+        .title-and-logo {
+            display: flex;
+
+            img {
+                height: 80px;
+                width: auto;
+                margin-left: 40px;
+            }
+        }
+    }
+    
+    .cocDetail {
+        background-color: $BEIGE_BACKGROUND;
+        padding: 60px 40px;
+        border: solid 1px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .contents {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer {
+            float: right;
+            font-weight: bold;
+            margin-left: 86%;
+        }
+    }
+}
