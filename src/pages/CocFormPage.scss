@@ -1,4 +1,5 @@
 $BEIGE_BACKGROUND: #FFFDFB;
+$LIGHT_PURPLE: rgba(117, 117, 255, 1);
 
 .coc-page {
     display: flex;
@@ -91,14 +92,14 @@ $BEIGE_BACKGROUND: #FFFDFB;
     .submit {
         background-color: white;
         border-radius: 10px;
-        border: 1px solid purple;
+        border: 1px solid $LIGHT_PURPLE;
         padding: 24px 32px;
         margin-bottom: 40px;
         font-size: 1.5rem;
     }
 
     .submit:hover {
-        background-color: purple;
+        background-color: $LIGHT_PURPLE;
         color: white;
     }
 }

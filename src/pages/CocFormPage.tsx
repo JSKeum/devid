@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import IPFS from 'ipfs';
-import EthCrypto from 'eth-crypto';
 
 import { DevidContext } from '../store/store';
 import './CocFormPage.scss';
@@ -9,8 +8,9 @@ import cocLeftImage from '../assets/coc-left.png';
 import devidDocumentImage from '../assets/devid-document.png';
 
 function CocFormPage() {
-    const { state } = useContext(DevidContext);
+    const { state, dispatch } = useContext(DevidContext);
     const { wallet, cocContractInstance } = state;
+    const history = useHistory();
 
     const [senderPhoneNumber, setSenderPhoneNumber] = useState(0);
     const handleSenderPhoneNumberChange = (event: any) => {
@@ -44,9 +44,9 @@ function CocFormPage() {
     const handleRecipientEmailChange = (event: any) => {
         setRecipientEmail(event.target.value);
     }
-    const [recipientPublicKey, setRecipientPublicKey] = useState('');
-    const handleRecipientPublicKeyChange = (event: any) => {
-        setRecipientPublicKey(event.target.value);
+    const [recipientWallet, setRecipientWallet] = useState('');
+    const handleRecipientWalletChange = (event: any) => {
+        setRecipientWallet(event.target.value);
     }
     const [debt, setDebt] = useState(0);
     const handleDebtChange = (event: any) => {
@@ -77,11 +77,22 @@ function CocFormPage() {
         setOtherText(event.target.value);
     }
 
-    const history = useHistory();
-
     const goToMyCocSendPage = () => {
         history.push('/main');
     };
+
+    const connectWallet = async () => {
+        if (!state.wallet) {
+          await window.ethereum.enable();
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+
+          dispatch({ type: "SET_USER_WALLET", value: accounts[0] });
+        }
+    }
+
+    useEffect(() => {
+        connectWallet();
+    }, []);
 
     interface CocForm {
         senderPhoneNumber: number;
@@ -92,6 +103,7 @@ function CocFormPage() {
         recipientName: string;
         recipientAddress: string;
         recipientEmail: string;
+        recipientWallet: string;
         debt: number;
         interest: number;
         lentDate: string;
@@ -104,12 +116,12 @@ function CocFormPage() {
     const saveToIPFS = async (data: any) => {
         const node = await IPFS.create();
 
-        const encrypted = await EthCrypto.encryptWithPublicKey(
-            recipientPublicKey, // encrypt with alice's publicKey
-            JSON.stringify(data)
-        );
+        // const encrypted = await EthCrypto.encryptWithPublicKey(
+        //     recipientPublicKey, // encrypt with alice's publicKey
+        //     JSON.stringify(data)
+        // );
         
-        const dataToBuffer = Buffer.from(JSON.stringify(encrypted));
+        const dataToBuffer = Buffer.from(JSON.stringify(data));
         const ipfs = await node.add(dataToBuffer);
         console.debug('ipfs created, ', ipfs);
 
@@ -119,12 +131,14 @@ function CocFormPage() {
 
     const createCoc = async (cid: string) => {
         await cocContractInstance.methods.createCOC(
-            '0x0493a03E62b732d4bD454ff84B00cb68013d2EcC',
+            wallet,
             senderPhoneNumber,
-            recipientAddress,
+            recipientWallet,
             recipientPhoneNumber,
             cid
-        ).send({ from: '0x0493a03E62b732d4bD454ff84B00cb68013d2EcC' });
+        ).send({ from: wallet });
+
+        history.push('/main');
     }
 
     const onSubmit = async () => {
@@ -137,6 +151,7 @@ function CocFormPage() {
             recipientName: recipientName,
             recipientAddress: recipientAddress,
             recipientEmail: recipientEmail,
+            recipientWallet: recipientWallet,
             debt: debt,
             interest: interest,
             lentDate: lentDate,
@@ -158,7 +173,7 @@ function CocFormPage() {
             <div className="coc-right">
                 <div className="flex flex-center">
                     <h1>대여금 반환 청구</h1>
-                    <img src={devidDocumentImage} alt=""/>
+                    <img src={devidDocumentImage} alt="devid-document"/>
                 </div>
                 <div className="topInfo">
                     <div className="sender-info">
@@ -202,10 +217,10 @@ function CocFormPage() {
                             <h3>이메일</h3>
                             <input type="text" value={recipientEmail} onChange={handleRecipientEmailChange}/>
                         </div>
-                        {/* <div>
-                            <h3>수신인 계정의 Public Key</h3>
-                            <input type="text" value={recipientPublicKey} onChange={handleRecipientPublicKeyChange}/>
-                        </div> */}
+                        <div className="email">
+                            <h3>지갑 주소</h3>
+                            <input type="text" value={recipientWallet} onChange={handleRecipientWalletChange}/>
+                        </div>
                     </div>
                 </div>
                 <div className="bottomInfo">
