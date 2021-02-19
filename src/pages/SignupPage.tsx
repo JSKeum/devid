@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DevidContext } from '../store/store';
 import "./SignupPage.scss";
 import devidDocumentImage from '../assets/devid-document.png';
+import spinnerGif from '../assets/devid-spinner.gif';
 
 function SignupPage() {
     const [phoneNumber, setPhoneNumber] = useState('');
-    const { state } = useContext(DevidContext);
+    const [isDoingTransaction, setIsDoingTransaction] = useState(false);
+    const { state, dispatch } = useContext(DevidContext);
     const { wallet, cocContractInstance } = state
     const history = useHistory();
 
@@ -24,10 +26,32 @@ function SignupPage() {
     }
 
     const handleSubmit = async () => {
-        const transaction = await onCreateUser();
-        console.debug(transaction);
-        goToMainPage();
+        try { 
+            setIsDoingTransaction(true);
+            const transaction = await onCreateUser();
+            setIsDoingTransaction(false);
+
+            console.debug(transaction);
+            goToMainPage();
+        } catch(e) {
+            setIsDoingTransaction(false);
+            window.alert('블록체인 네트워크 연결에 문제가 발생했습니다. 다시 시도해주세요')
+            console.debug(e);
+        }
     }
+
+    const connectWallet = async () => {
+        if (!state.wallet) {
+          await window.ethereum.enable();
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+
+          dispatch({ type: "SET_USER_WALLET", value: accounts[0] });
+        }
+    }
+
+    useEffect(() => {
+        connectWallet();
+    }, []);
 
     return (
         <div className="signupWrapper">
@@ -42,6 +66,8 @@ function SignupPage() {
                     <input type="text" value={phoneNumber} onChange={handleNumberInputChange}/>
                     <button type="button" onClick={handleSubmit}>가입하기</button>
                 </div>
+
+                {isDoingTransaction && <img src={spinnerGif} className="spinner" alt="spinner" width="60px" />}
             </div>
         </div>
     )

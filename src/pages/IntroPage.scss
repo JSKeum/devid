@@ -1,0 +1,30 @@
+$LIGHT_PURPLE: rgba(117, 117, 255, 1);
+
+.intro {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/intro.png');
+    background-size: 100vw 100vh;
+
+    .loginWrapper {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+
+        button {
+            border: 1px solid $LIGHT_PURPLE;
+            background-color: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 12px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            border: 1px solid white;
+            background-color: $LIGHT_PURPLE;
+            color: white;
+        }
+    }
+}

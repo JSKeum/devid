@@ -1,0 +1,52 @@
+$BEIGE_BACKGROUND: #FFFDFB;
+$LIGHT_PURPLE: rgba(117, 117, 255, 1);
+
+.mainWrapper {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        margin-bottom: 40px;
+
+        img {
+            width: auto;
+            height: 60px;
+            margin-left: 24px;
+        }
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 80px;
+        background-color: $BEIGE_BACKGROUND;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+
+        button {
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid $LIGHT_PURPLE;
+            padding: 16px 32px;
+            font-size: 24px;
+        }
+
+        button:first-child {
+            margin-bottom: 40px;
+        }
+    
+        button:hover {
+            background-color: $LIGHT_PURPLE;
+            color: white
+        }
+    }
+}

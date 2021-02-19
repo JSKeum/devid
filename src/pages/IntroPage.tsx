@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Login from '../components/Login';
-import './IntroPage.css';
+import './IntroPage.scss';
 
 function IntroPage() {
     const history = useHistory();
