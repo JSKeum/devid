@@ -1,0 +1,75 @@
+$BEIGE_BACKGROUND: #FFFDFB;
+$LIGHT_PURPLE: rgba(117, 117, 255, 1);
+
+.myCoCPage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        margin-bottom: 40px;
+
+        img {
+            width: auto;
+            height: 80px;
+            margin-left: 24px;
+        }
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .myCoC {
+        padding: 40px 80px;
+        background-color: $BEIGE_BACKGROUND;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px; 
+        
+        .info-wrapper {
+            display: flex;
+            margin-bottom: 40px;
+
+            .link-button {
+                background-color: white;
+                border-radius: 10px;
+                border: 1px solid $LIGHT_PURPLE;
+                padding: 16px 32px;
+                font-size: 18px;
+                text-decoration: none;
+                color: black;
+            }
+    
+            .link-button:hover {
+                background-color: $LIGHT_PURPLE;
+                color: white
+            }
+            
+            .info {
+                margin-left: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+    
+                a {
+                    text-decoration: none;
+                }
+
+                a:visited {
+                    color: black;
+                }
+            }
+        }
+        
+        h2 {
+            margin-bottom: 40px;
+        }
+
+        
+    }
+}

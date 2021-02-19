@@ -48,7 +48,7 @@ function App() {
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/cocform" component={CocFormPage} />
           <Route exact path="/cocreceived" component={CocReceivedPage} />
-          <Route exact path="/cocdetail" component={CocDetail} />
+          <Route exact path="/cocdetail/:address" component={CocDetail} />
           <Redirect exact to="/intro" />
         </Switch>
       </Router>
